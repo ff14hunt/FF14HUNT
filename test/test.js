@@ -38,7 +38,7 @@ $('#google-submit').click(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://script.google.com/macros/s/AKfycbwiHDc2dHHsppLBV9K6RuwWqqFAfkuqtRBMkcIOxo-ph6YP3PEw/exec",
+    url: "https://script.google.com/macros/s/AKfycbwDPbS-NLPod3G6leDWDC2LY6I-dNPrvEAIe1VMAijkxjzwl5RK6SDYDZKD_xgkcPtJ/exec",
     data: {
       "이름": inputName.val(),
       "나이": inputAge.val(),
