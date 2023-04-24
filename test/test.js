@@ -6,8 +6,8 @@ var inputName = $('#name');
 var inputAge = $('#age');
 var inputArea = $('#area');
 
-function isLoading(status){
-  if(status){
+function isLoading(status) {
+  if (status) {
     $('html, body').addClass('wait');
     googleSubmitBtn.attr('disabled', true).html('입력중...');
   } else {
@@ -16,9 +16,9 @@ function isLoading(status){
   }
 }
 
-function checkInput(){
+function checkInput() {
   var isEmpty = false;
-  $.each(inputs, function (index, element) {
+  $.each(inputs, function(index, element) {
     if (element.value === '') {
       alert('빈 칸이 있어요.');
       isEmpty = true;
@@ -28,10 +28,12 @@ function checkInput(){
   return isEmpty;
 }
 
-$('#google-submit').click(function () {
+$('#google-submit').click(function() {
 
   //빈값 체크
-  if (checkInput()) { return; }
+  if (checkInput()) {
+    return;
+  }
 
   // 입력중..
   isLoading(true);
@@ -44,11 +46,11 @@ $('#google-submit').click(function () {
       "나이": inputAge.val(),
       "사는곳": inputArea.val()
     },
-    success: function (response) {
+    success: function(response) {
       isLoading(false);
 
       snackbar.html('입력이 완료됐습니다.').addClass('show');
-      setTimeout(function () {
+      setTimeout(function() {
         snackbar.removeClass('show');
       }, 3000);
 
@@ -57,7 +59,7 @@ $('#google-submit').click(function () {
       inputAge.val('');
       inputArea.val('');
     },
-    error: function (request, status, error) {
+    error: function(request, status, error) {
       isLoading(false);
       console.log("code:" + request.status + "\n" + "error:" + error);
       console.log(request.responseText);
