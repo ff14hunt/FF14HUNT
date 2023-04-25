@@ -16430,7 +16430,7 @@ class Radar {
     type: "GET",
     url: "https://script.google.com/macros/s/AKfycbwDPbS-NLPod3G6leDWDC2LY6I-dNPrvEAIe1VMAijkxjzwl5RK6SDYDZKD_xgkcPtJ/exec",
     data: {
-      "이름": ${monster.name}.val(),
+      "이름": $('monster.name').val(),
       }
     })
     monster.dom.remove();
