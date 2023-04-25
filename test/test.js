@@ -1,5 +1,5 @@
 var mamulZone = {
-	"나무인형": "중부 라노시아",
+	"미라드로시": " 라노시아",
 	"못생긴 보가쟈": "중부 라노시아",
 	"웅크테히": "저지 라노시아",
 	"마도 지옥손아귀": "동부 라노시아",
@@ -128,6 +128,90 @@ var mamulNameConvert = {
 	"야광화": "알테마"
 };
 
+var mamulList = {
+	A: [],
+	S: [],
+	E: [],
+	ES: [],
+	ALL: [],
+	map: {}
+};
+
+function onOverlayDataUpdate(e) {
+	try {
+
+		var dead = (e.detail.Encounter.kills > 0);
+		var name = e.detail.Encounter.title;
+		var zone = e.detail.Encounter.CurrentZoneName;
+
+		if (getParameterByName("log") != null) {
+			var kor = convertEngToKorZone(zone);
+			$("#headerTitle span").text(kor + ": " + name);
+			console.log(e.detail.Encounter);
+			console.log(e.detail.Combatant["YOU"]);
+		}
+
+		if (getParameterByName("view") != null) return;
+
+		console.log(zone + " -> " + name + " : " + dead + " isActive: " + e.detail.isActive);
+
+		if (getParameterByName("report") == "0") return;
+
+		if (name == null || name === "Encounter") return;
+
+		if (mamulNameConvert[name] != null) name = mamulNameConvert[name];
+
+		if (isMamul(name, zone) == false) return;
+		if (checkIfReported(name)) return;
+		if (isMamulInTimeRange(name) == false) return;
+
+		var info = combatInfo(e.detail);
+
+		doReport(name, info, dead);
+	} catch (ex) {
+
+	}
+}
+
+function importMamul(rows) {
+	var a = [], s = [], e = [];
+	var r = s;
+	for (i = 0; i < rows.length; i++) {
+		var row = rows[i];
+		//appendPre(row[0] + ', ' + row[1] + ", " + row[2]);
+		//$("#contents table tbody").append("<tr><td>" + row[0] + "</td><td>test</td></tr>");
+
+		a.push({
+			name: row[0],
+			s: convert2jsDate(row[1]),
+			e: convert2jsDate(row[2])
+		});
+
+		if (row[3] === "" || row[3] == null) {
+			r = e;
+			continue;
+		}
+
+		r.push({
+			name: row[3],
+			s: convert2jsDate(row[4]),
+			e: convert2jsDate(row[5])
+		});
+	}
+
+	var es = [], all = [], map = {}
+	for (var i = 0; i < a.length; i++) all.push(a[i]);
+	for (var i = 0; i < e.length; i++) { es.push(e[i]); all.push(e[i]); }
+	for (var i = 0; i < s.length; i++) { es.push(s[i]); all.push(s[i]); }
+	for (var i = 0; i < all.length; i++) map[all[i].name] = all[i];
+	mamulList.A = a;
+	mamulList.S = s;
+	mamulList.E = e;
+	mamulList.ES = es;
+	mamulList.ALL = all;
+	mamulList.map = map;
+}
+
 
 var inputs = $('input[type="text"]');
 var googleSubmitBtn = $('#google-submit');
@@ -175,7 +259,8 @@ $('#google-submit').click(function() {
     data: {
       "이름": inputName.val(),
       "나이": inputAge.val(),
-      "사는곳": inputArea.val()
+      "사는곳": inputArea.val(),
+      "가": mamulList.A.val(),
     },
     success: function(response) {
       isLoading(false);
