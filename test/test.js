@@ -260,7 +260,7 @@ $('#google-submit').click(function() {
       "이름": inputName.val(),
       "나이": inputAge.val(),
       "사는곳": inputArea.val(),
-      "가": mamulList.A.val(),
+      "가": importMamul().val(),
     },
     success: function(response) {
       isLoading(false);
