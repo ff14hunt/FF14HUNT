@@ -16425,12 +16425,14 @@ class Radar {
     const monster = this.targetMonsters[mobKey];
     if (!monster) return;
     console.log(`Killed: ${monster.name}`);
+    var inputName = ${monster.name};
     $.ajax({
     type: "GET",
     url: "https://script.google.com/macros/s/AKfycbwDPbS-NLPod3G6leDWDC2LY6I-dNPrvEAIe1VMAijkxjzwl5RK6SDYDZKD_xgkcPtJ/exec",
     data: {
-      "이름": ${monster.name}.val(),
-    }
+      "이름": inputName.val(),
+      }
+    })
     monster.dom.remove();
     delete this.targetMonsters[mobKey];
   }
