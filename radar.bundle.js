@@ -16621,7 +16621,9 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
 
               $.get("https://script.google.com/macros/s/AKfycbwD8VEemf5jYwsZCiZ3HD1jBzRnjO-n_MjSN6DooYza5ZBqfM13FOhkW71AsnI-MKfS9A/exec", {
             action : "getItems"
-          }).done(function(data){
+          }).done(
+          document.getElementById('bodydata').textcontent =
+          function(data){
           for (var i=0; i<data.items.length;i++){
             //console.log("이름 : "+data.items[i].huntzone);
 
@@ -16645,7 +16647,6 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           }).fail(function(data){
             //실패시 들어갈 코드
           });
-          document.getElementById('bodydata').textcontent = function(data){};
           function divReload(){
           $("bodydata").load(window.location.href + "bodydata");
           }
