@@ -16645,8 +16645,9 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           }).fail(function(data){
             //실패시 들어갈 코드
           });
+          document.getElementById('bodydata').textcontent = function(data){};
           function divReload(){
-          $("body").load(window.location.href + "body");
+          $("bodydata").load(window.location.href + "bodydata");
           }
 
           setInterval(divReload, 5000);
