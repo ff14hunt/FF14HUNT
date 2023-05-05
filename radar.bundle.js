@@ -16652,7 +16652,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           $("tbody").load(window.location.href + "tbody");
           }
 
-          setInterval(divReload, 1000);
+          setInterval(divReload, 5000);
           
 
 
