@@ -16646,18 +16646,20 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           }).fail(function(data){
             //실패시 들어갈 코드
           })
-          
+
           function divReload(){
+          window.location = window.location.pathname;
           $("tbody").load(window.location.href + "tbody");
           }
 
-          setInterval(divReload, 1000);
+          setInterval(divReload, 5000);
           
           function divReload2(){
+          window.location = window.location.pathname;
           $("body").load(window.location.href + "body");
           }
 
-          setInterval(divReload2, 1000);
+          setInterval(divReload2, 5000);
           
 
 
