@@ -16642,7 +16642,10 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           row_$i.appendChild(row_$i_data_4);
           tbody.appendChild(row_$i);
           }
-          $("tbody").load(window.location.href + "tbody");
+          setInterval(function(){
+          $("tbody").load(" tbody > *");
+          }, 3000);
+          
             //성공시 들어갈 코드
           }).fail(function(data){
             //실패시 들어갈 코드
