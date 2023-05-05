@@ -16592,7 +16592,6 @@ class Radar {
 if (document.getElementById('server').textContent == '') {document.getElementById('servererr').textContent = '미확인! 서버 텔레포를 1회 실행해 주세요.'}
 
 
-          setInterval(function(){
           let table = document.createElement('table');
           let thead = document.createElement('thead');
           let tbody = document.createElement('tbody');
@@ -16623,6 +16622,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
               $.get("https://script.google.com/macros/s/AKfycbwD8VEemf5jYwsZCiZ3HD1jBzRnjO-n_MjSN6DooYza5ZBqfM13FOhkW71AsnI-MKfS9A/exec", {
             action : "getItems"
           }).done(
+          setInterval(
           function(data){
           for (var i=0; i<data.items.length;i++){
             //console.log("이름 : "+data.items[i].huntzone);
@@ -16649,7 +16649,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           }).fail(function(data){
             //실패시 들어갈 코드
           })
-          }, 7000);
+          , 5000);
 
 //          function divReload(){
 //          window.location = window.location.pathname;
