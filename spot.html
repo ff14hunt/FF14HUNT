@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<title>KrHunt Reporter</title>
+<script defer="defer" src="../../ui/radar/radar.bundle.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href="../../ui/radar/radar.css" rel="stylesheet">
+    <style>
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        th, td{
+            padding: 1px 01px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="radar-div box">
+<div align="center" class="radar-image-div">
+<table id="radar-table">
+<tr class="resize-helper">
+<th><img id="test-demo" class="radar-image-40" src="arrow.png"></th>
+<th><div>YOU Distance:0</div></th></tr></table></div>
+<div align="center" class="radar-image-div">
+<img id="test-image" class="hide radar-image-40" src="arrow.png"></div></div>
+<div>서버 : <span id="server"></span><span id="servererr"></span></div>
+<div id="body"></div>
+<img id="maplink" src="" style="width: 100%; height: auto;">
+<input type="hidden" id="instancenumber">
+<input type="hidden" id="zone">
+</body>
+</html>
