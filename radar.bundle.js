@@ -16652,14 +16652,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           $("tbody").load(window.location.href + "tbody");
           }
 
-          setInterval(divReload, 5000);
-          
-          function divReload2(){
-          window.location = window.location.pathname;
-          $("body").load(window.location.href + "body");
-          }
-
-          setInterval(divReload2, 5000);
+          setInterval(divReload, 1000);
           
 
 
