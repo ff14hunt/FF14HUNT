@@ -16642,17 +16642,18 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           row_$i.appendChild(row_$i_data_4);
           tbody.appendChild(row_$i);
           }
+          $("tbody").load(window.location.href + "tbody");
             //성공시 들어갈 코드
           }).fail(function(data){
             //실패시 들어갈 코드
           })
 
-          function divReload(){
-          window.location = window.location.pathname;
-          $("tbody").load(window.location.href + "tbody");
-          }
+//          function divReload(){
+//          window.location = window.location.pathname;
+//          $("tbody").load(window.location.href + "tbody");
+//          }
 
-          setInterval(divReload, 5000);
+//          setInterval(divReload, 5000);
           
 
 
