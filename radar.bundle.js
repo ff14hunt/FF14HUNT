@@ -16619,10 +16619,10 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           row_1.appendChild(heading_4);
           thead.appendChild(row_1);
 
-            setInterval(
               $.get("https://script.google.com/macros/s/AKfycbwD8VEemf5jYwsZCiZ3HD1jBzRnjO-n_MjSN6DooYza5ZBqfM13FOhkW71AsnI-MKfS9A/exec", {
             action : "getItems"
           }).done(
+            setInterval(
             function(data){
           for (var i=0; i<data.items.length;i++){
             //console.log("이름 : "+data.items[i].huntzone);
@@ -16644,10 +16644,10 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           tbody.appendChild(row_$i);
           } 
             //성공시 들어갈 코드
-          }).fail(function(data){
+          }, 5000)).fail(function(data){
             //실패시 들어갈 코드
           })
-          , 5000)
+          
           function divReload(){
           $("body").load(window.location.href + "body");
           }
