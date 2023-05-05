@@ -16641,7 +16641,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           row_$i.appendChild(row_$i_data_4);
           tbody.appendChild(row_$i);
           }
-          this.className = "bodydata";
+          this.document.getElementById('bodydata');
             //성공시 들어갈 코드
           }).fail(function(data){
             //실패시 들어갈 코드
