@@ -16645,7 +16645,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           setInterval(function(){
           $("tbody").load(" tbody > *");
           document.getElementById('body').appendChild(table);
-          }, 7000);
+          }, 4000);
           
             //성공시 들어갈 코드
           }).fail(function(data){
