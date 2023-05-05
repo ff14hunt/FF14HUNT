@@ -16649,6 +16649,7 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           
           function divReload(){
           $("tbody").load(window.location.href + "tbody");
+          $("body").load(window.location.href + "body");
           }
 
           setInterval(divReload, 5000);
