@@ -16649,10 +16649,15 @@ if (document.getElementById('server').textContent == '') {document.getElementByI
           
           function divReload(){
           $("tbody").load(window.location.href + "tbody");
+          }
+
+          setInterval(divReload, 1000);
+          
+          function divReload2(){
           $("body").load(window.location.href + "body");
           }
 
-          setInterval(divReload, 5000);
+          setInterval(divReload2, 1000);
           
 
 
