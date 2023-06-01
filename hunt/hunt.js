@@ -16061,63 +16061,63 @@ const data = {
     },
     'rank': 'F'
   },
-  'coeurlregina': {
+  'Coeurl of the Royal Clowder': {
     'id': '3790',
     'name': {
       'ko': '고귀한 커얼'
     },
     'rank': 'F'
   },
-  'coeurlregina': {
+  'Coeurlregina': {
     'id': '3789',
     'name': {
       'ko': '커얼레기나'
     },
     'rank': 'F'
   },
-  'noctilucale': {
+  'Noctilucale': {
     'id': '3783',
     'name': {
       'ko': '야광화'
     },
     'rank': 'F'
   },
-  'tamamo Gozen': {
+  'Tamamo Gozen': {
     'id': '6290',
     'name': {
       'ko': '타마모 어전'
     },
     'rank': 'F'
   },
-  'ixion': {
+  'Ixion': {
     'id': '6392',
     'name': {
       'ko': '익시온'
     },
     'rank': 'F'
   },
-  'formidable': {
+  'Formidable': {
     'id': '8822',
     'name': {
       'ko': '어마무시'
     },
     'rank': 'F'
   },
-  'archaeotania': {
+  'Archaeotania': {
     'id': '8234',
     'name': {
       'ko': '아르케오타니아'
     },
     'rank': 'F'
   },
-  'daivadipa': {
-    'id': '1000',
+  'Daivadipa': {
+    'id': '10269',
     'name': {
       'ko': '다이바디파'
     },
     'rank': 'F'
   },
-  'chi': {
+  'Chi': {
     'id': '10400',
     'name': {
       'ko': '키'
@@ -16144,7 +16144,7 @@ const data = {
 // 익시온 id 6392
 // 어마무시 id 8822
 // 아르케오타니아 id 8234
-// 사베네어 id 
+// 사베네어 id 10269
 // 키 id 10400
 
 /* harmony default export */ const hunt = (data);
@@ -16693,10 +16693,12 @@ function makeHuntTimertip() {
           this.closest('tr').remove();
         }
       });
-      var recentcuttime = new Date(data.items[1].tipgathertime);
       var now = new Date();
-      if (Math.abs(recentcuttime.getTime() - now.getTime()) < 2*60*1000) {$('#bodytip tbody tr:nth-child(1) td:nth-child(1)').css({'color':"#FF8D8D"})}
-      if (Math.abs(recentcuttime.getTime() - now.getTime()) > 2*60*1000) {$('#bodytip tbody tr:nth-child(1) td:nth-child(1)').css({'color':"#e2ebf5"})}
+      for (var i=1; i<data.items.length;i++){
+        var recentcuttime = new Date(data.items[i].tipgathertime);
+        if (Math.abs(recentcuttime.getTime() - now.getTime()) < 2*60*1000) {$('#bodytip tbody tr:nth-child(' + i + ') td:nth-child(1)').css({'color':"#FF8D8D"})}
+        if (Math.abs(recentcuttime.getTime() - now.getTime()) > 2*60*1000) {$('#bodytip tbody tr:nth-child(' + i + ') td:nth-child(1)').css({'color':"#e2ebf5"})}
+      }
       //성공시 들어갈 코드
     }).fail(function(data){
       //실패시 들어갈 코드
@@ -16761,13 +16763,20 @@ function makeHuntTimerrun() {
 }
 
 if (document.getElementById('page').textContent == 'report.html' && document.getElementById('repdisplay').textContent == '') {
-  document.getElementById('repdisplay').textContent = 1;
+  if (!localStorage.getItem('instruction') || localStorage.getItem('instruction') == 1) {
+    document.getElementById('repdisplay').textContent = 1;
+    localStorage.setItem('instruction', 1);
+    makeTableins();
+    makeHuntTimerins();
+    document.getElementById('bodyins').style.display = "table";
+  } else {
+    document.getElementById('repdisplay').textContent = 4;
+    makeTableins();
+    document.getElementById('bodyins').style.display = "none";
+  }
   document.getElementById('autoreport').textContent = 3;
-  makeTableins();
-  makeHuntTimerins();
   makeTabletip();
   makeTablerun();
-  document.getElementById('bodyins').style.display = "table";
   document.getElementById('bodytip').style.display = "none";
   document.getElementById('bodyrun').style.display = "none";
 }
@@ -17004,9 +17013,19 @@ class Radar {
             var rankadj = `${m.rank}`;
             if (`${m.rank}` == "SS+") {var rankadj = "SS"}
             if (rankadj == 'F') {
+              var rankadj = '특수돌발';
               document.getElementById('addrankf').textContent = '특수돌발';
               document.getElementById('addcorxf').textContent = `${mapX}`;
               document.getElementById('addcoryf').textContent = `${mapY}`;
+            }
+            if (`${m.name}` == '고귀한 커얼') {
+              var rankadj = '레기나 1단계';
+            }
+            if (`${m.name}` == '커얼레기나' && `${m.hp}` == '5806088') {
+              var rankadj = '레기나 2단계';
+            }
+            if (`${m.name}` == '커얼레기나' && `${m.hp}` == '8416660') {
+              var rankadj = '레기나 3단계';
             }
             if (rankadj == 'S' || rankadj == 'SS') {
               document.getElementById('addranks').textContent = rankadj;
@@ -17072,6 +17091,10 @@ class Radar {
             if (`${monster.hp}` == '5806088') {var adjname = '레기나 2단계'}
             if (`${monster.hp}` == '8416660') {var adjname = '레기나 3단계'}
           }
+          var adjrank = `${monster.rank}`;
+          if (`${monster.rank}` == 'F') {
+            var adjrank = '특수돌발';
+          }
           var monremoved = true;
           for (var i=0; i<data.items.length;i++){
             if (data.items[i].cutserv == document.getElementById('server').textContent && data.items[i].cutname == adjname) {
@@ -17089,7 +17112,7 @@ class Radar {
               "시간": nowtime,
               "서버": document.getElementById('server').textContent,
               "이름": adjname,
-              "등급": `${monster.rank}`,
+              "등급": adjrank,
               "인스턴스": document.getElementById('instancenumber').textContent
               }
             });
@@ -17211,9 +17234,14 @@ class Radar {
           document.getElementById('reboot').textContent = '';
 
           if (document.getElementById('page').textContent == 'report.html') {
-            document.getElementById('repdisplay').textContent = 1;
-            makeHuntTimerins();
-            document.getElementById('bodyins').style.display = "table";
+            if (localStorage.getItem('instruction') == 4) {
+              document.getElementById('repdisplay').textContent = 4;
+              document.getElementById('bodyins').style.display = "none";
+            } else {
+              document.getElementById('repdisplay').textContent = 1;
+              makeHuntTimerins();
+              document.getElementById('bodyins').style.display = "table";
+            }
             document.getElementById('bodytip').style.display = "none";
             document.getElementById('bodyrun').style.display = "none";
             document.getElementById('sumcharacterdata').textContent = '접속자 : 정보 없음 (맵 이동 시 갱신)';
@@ -17261,7 +17289,7 @@ class Radar {
                 document.getElementById('bodyspot').style.display = "table";
               }
   
-              document.getElementById('maplink').src = '../../ui/radar/' + document.getElementById('zone').textContent + '.png';
+              document.getElementById('maplink').src = '../hunt/' + document.getElementById('zone').textContent + '.png';
             }
           }
           // don't remove mobs lasting less than 10 seconds
@@ -17272,12 +17300,14 @@ class Radar {
         if (this.regexes.instruction.test(log)) {
           if (document.getElementById('repdisplay').textContent == 1) {
             document.getElementById('repdisplay').textContent = 4;
+            localStorage.setItem('instruction', 4);
             document.getElementById('bodyins').style.display = "none";
             document.getElementById('bodytip').style.display = "none";
             document.getElementById('bodyrun').style.display = "none";
           } else {
             if (document.getElementById('repdisplay').textContent == 2 || document.getElementById('repdisplay').textContent == 3 || document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 || document.getElementById('repdisplay').textContent == 6) {
               document.getElementById('repdisplay').textContent = 1;
+              localStorage.setItem('instruction', 1);
               makeHuntTimerins();
               document.getElementById('bodyins').style.display = "table";
               document.getElementById('bodytip').style.display = "none";
@@ -17310,6 +17340,7 @@ class Radar {
             }
           }
           if (line == '정보 전파') {
+            localStorage.setItem('instruction', 4);
             if (document.getElementById('repdisplay').textContent == 2) {
               document.getElementById('repdisplay').textContent = 5;
               document.getElementById('bodyins').style.display = "none";
@@ -17410,12 +17441,14 @@ class Radar {
             if (line == '마물런 창천') {document.getElementById('exprun').textContent = '3';}
             if (line == '마물런 신생') {document.getElementById('exprun').textContent = '4';}
             document.getElementById('repdisplay').textContent = 3;
+            localStorage.setItem('instruction', 4);
             makeHuntTimerrun();
             document.getElementById('bodyins').style.display = "none";
             document.getElementById('bodytip').style.display = "none";
             document.getElementById('bodyrun').style.display = "table";
           }
           if (line == '마물런') {
+            localStorage.setItem('instruction', 4);
             if (document.getElementById('repdisplay').textContent == 3) {
               document.getElementById('repdisplay').textContent = 6;
               document.getElementById('bodyins').style.display = "none";
@@ -17615,7 +17648,7 @@ class Radar {
               }
             }
           }
-          if (line == '시트 1') {
+          if (line == '시트1' || line == '시트 1') {
             if (document.getElementById('tabdisplay').textContent == 1) {
               document.getElementById('tabdisplay').textContent = 4;
               document.getElementById('bodya').style.display = "none";
@@ -17631,7 +17664,7 @@ class Radar {
               }
             }
           }
-          if (line == '시트 2') {
+          if (line == '시트2' || line == '시트 2') {
             if (document.getElementById('tabdisplay').textContent == 2) {
               document.getElementById('tabdisplay').textContent = 5;
               document.getElementById('bodya').style.display = "none";
@@ -17647,7 +17680,7 @@ class Radar {
               }
             }
           }
-          if (line == '시트 3') {
+          if (line == '시트3' || line == '시트 3') {
             if (document.getElementById('tabdisplay').textContent == 3) {
               document.getElementById('tabdisplay').textContent = 6;
               document.getElementById('bodya').style.display = "none";
@@ -17703,7 +17736,7 @@ class Radar {
             document.getElementById('bodyspot').style.display = "table";
           }
 
-          document.getElementById('maplink').src = '../../ui/radar/' + name + '.png';
+          document.getElementById('maplink').src = '../hunt/' + name + '.png';
         }
       } else {
         if (name != '울티마 툴레') {
