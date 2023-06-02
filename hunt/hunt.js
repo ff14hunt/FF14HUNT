@@ -16132,6 +16132,9 @@ id : ???|00|??|0000|00||id|
 258|2023-05-26T12:13:10.4470000+09:00|Add|E000|000001F9|00000000|00000000|00000000|00000000|00000000|00000000|3a2830b4daa82362
 258|2023-05-26T12:43:10.7210000+09:00|Remove|8436|000001F9|00000000|00000000|00000000|00000000|00000000|00007FBD|d377b54f76dbf944
 04|2023-05-26T12:43:22.7000000+09:00|40087FF6|베히모스|00|32|0000|00||655|733|2065340|2066022|0|10000|||-722.89|-42.84|226.82|1.73|eb3acf02e1f2f03c
+258|2023-06-02T16:22:55.5750000+09:00|Update|0000|000001F9|00000064|00000000|00000000|00000000|00000000|00000000|94f7e81116ab3da9
+베히모스 2단계
+258|2023-06-02T16:22:56.3790000+09:00|Add|E000|000001FA|00000000|00000000|00000000|00000000|00000000|00000000|598117e4d9ed6336
 오딘
 검은장막 숲 남부삼림 ( 19.2 , 20.1 ) 53레벨
 03|2023-05-26T23:41:26.4150000+09:00|40106AB8|제소|00|35|0000|00||887|882|11048400|11048400|0|10000|||-73.29|-55.25|4.86|-2.27|d1047c228027f396
@@ -16657,83 +16660,88 @@ function makeHuntTimerc() {
 }
 
 function makeHuntTimerspot() {
+  clearInterval(intervalspot);
+  document.getElementById('bodyspot').getElementsByTagName('thead')[0].innerHTML = "";
+  document.getElementById('bodyspot').getElementsByTagName('tbody')[0].innerHTML = "";
   function makeHuntTimerloopspot() {
     $.get("https://script.google.com/macros/s/AKfycbwD8VEemf5jYwsZCiZ3HD1jBzRnjO-n_MjSN6DooYza5ZBqfM13FOhkW71AsnI-MKfS9A/exec", {
       action : "getItems" + document.getElementById('servernzone').textContent
     }).done(
     function(data){
-      if(document.getElementById('sponum').textContent != document.getElementById('servernzone').textContent) {
+      if(document.getElementById('zoneshort').textContent != data.items[0].spot1) {
         clearInterval(intervalspot);
-      }
+        document.getElementById('bodyspot').getElementsByTagName('thead')[0].innerHTML = "";
+        document.getElementById('bodyspot').getElementsByTagName('tbody')[0].innerHTML = "";
+      } else {
 
-      document.getElementById('bodyspot').getElementsByTagName('thead')[0].innerHTML = "";
+        document.getElementById('bodyspot').getElementsByTagName('thead')[0].innerHTML = "";
 
-      let row_1_spot = document.createElement('tr');
-      let heading_1_spot = document.createElement('th');
-      heading_1_spot.innerHTML = data.items[0].spot0;
-      let heading_2_spot = document.createElement('th');
-      heading_2_spot.innerHTML = data.items[0].spot1;
-      let heading_3_spot = document.createElement('th');
-      heading_3_spot.innerHTML = data.items[0].spot2;
-      let heading_4_spot = document.createElement('th');
-      heading_4_spot.innerHTML = data.items[0].spot3;
-      let heading_5_spot = document.createElement('th');
-      heading_5_spot.innerHTML = data.items[0].spot4;
-      let heading_6_spot = document.createElement('th');
-      heading_6_spot.innerHTML = data.items[0].spot5;
-      let heading_7_spot = document.createElement('th');
-      heading_7_spot.innerHTML = data.items[0].spot6;
+        let row_1_spot = document.createElement('tr');
+        let heading_1_spot = document.createElement('th');
+        heading_1_spot.innerHTML = data.items[0].spot0;
+        let heading_2_spot = document.createElement('th');
+        heading_2_spot.innerHTML = data.items[0].spot1;
+        let heading_3_spot = document.createElement('th');
+        heading_3_spot.innerHTML = data.items[0].spot2;
+        let heading_4_spot = document.createElement('th');
+        heading_4_spot.innerHTML = data.items[0].spot3;
+        let heading_5_spot = document.createElement('th');
+        heading_5_spot.innerHTML = data.items[0].spot4;
+        let heading_6_spot = document.createElement('th');
+        heading_6_spot.innerHTML = data.items[0].spot5;
+        let heading_7_spot = document.createElement('th');
+        heading_7_spot.innerHTML = data.items[0].spot6;
 
-      row_1_spot.appendChild(heading_1_spot);
-      row_1_spot.appendChild(heading_2_spot);
-      row_1_spot.appendChild(heading_3_spot);
-      row_1_spot.appendChild(heading_4_spot);
-      row_1_spot.appendChild(heading_5_spot);
-      row_1_spot.appendChild(heading_6_spot);
-      row_1_spot.appendChild(heading_7_spot);
-      document.getElementById('bodyspot').getElementsByTagName('thead')[0].appendChild(row_1_spot);
+        row_1_spot.appendChild(heading_1_spot);
+        row_1_spot.appendChild(heading_2_spot);
+        row_1_spot.appendChild(heading_3_spot);
+        row_1_spot.appendChild(heading_4_spot);
+        row_1_spot.appendChild(heading_5_spot);
+        row_1_spot.appendChild(heading_6_spot);
+        row_1_spot.appendChild(heading_7_spot);
+        document.getElementById('bodyspot').getElementsByTagName('thead')[0].appendChild(row_1_spot);
 
-      document.getElementById('bodyspot').getElementsByTagName('tbody')[0].innerHTML = "";
-      for (var i=1; i<data.items.length;i++){
+        document.getElementById('bodyspot').getElementsByTagName('tbody')[0].innerHTML = "";
+        for (var i=1; i<data.items.length;i++){
   
-      let row_$i_spot = document.createElement('tr');
-      let row_$i_data_1_spot = document.createElement('td');
-      row_$i_data_1_spot.innerHTML = data.items[i].spot0;
-      let row_$i_data_2_spot = document.createElement('td');
-      row_$i_data_2_spot.innerHTML = data.items[i].spot1;
-      let row_$i_data_3_spot = document.createElement('td');
-      row_$i_data_3_spot.innerHTML = data.items[i].spot2;
-      let row_$i_data_4_spot = document.createElement('td');
-      row_$i_data_4_spot.innerHTML = data.items[i].spot3;
-      let row_$i_data_5_spot = document.createElement('td');
-      row_$i_data_5_spot.innerHTML = data.items[i].spot4;
-      let row_$i_data_6_spot = document.createElement('td');
-      row_$i_data_6_spot.innerHTML = data.items[i].spot5;
-      let row_$i_data_7_spot = document.createElement('td');
-      row_$i_data_7_spot.innerHTML = data.items[i].spot6;
+        let row_$i_spot = document.createElement('tr');
+        let row_$i_data_1_spot = document.createElement('td');
+        row_$i_data_1_spot.innerHTML = data.items[i].spot0;
+        let row_$i_data_2_spot = document.createElement('td');
+        row_$i_data_2_spot.innerHTML = data.items[i].spot1;
+        let row_$i_data_3_spot = document.createElement('td');
+        row_$i_data_3_spot.innerHTML = data.items[i].spot2;
+        let row_$i_data_4_spot = document.createElement('td');
+        row_$i_data_4_spot.innerHTML = data.items[i].spot3;
+        let row_$i_data_5_spot = document.createElement('td');
+        row_$i_data_5_spot.innerHTML = data.items[i].spot4;
+        let row_$i_data_6_spot = document.createElement('td');
+        row_$i_data_6_spot.innerHTML = data.items[i].spot5;
+        let row_$i_data_7_spot = document.createElement('td');
+        row_$i_data_7_spot.innerHTML = data.items[i].spot6;
 
-      row_$i_spot.appendChild(row_$i_data_1_spot);
-      row_$i_spot.appendChild(row_$i_data_2_spot);
-      row_$i_spot.appendChild(row_$i_data_3_spot);
-      row_$i_spot.appendChild(row_$i_data_4_spot);
-      row_$i_spot.appendChild(row_$i_data_5_spot);
-      row_$i_spot.appendChild(row_$i_data_6_spot);
-      row_$i_spot.appendChild(row_$i_data_7_spot);
-      document.getElementById('bodyspot').getElementsByTagName('tbody')[0].appendChild(row_$i_spot);
-      }
-      /*
-      $("td").each(function() {
-        if (this.innerText === '') {
-          this.closest('tr').remove();
+        row_$i_spot.appendChild(row_$i_data_1_spot);
+        row_$i_spot.appendChild(row_$i_data_2_spot);
+        row_$i_spot.appendChild(row_$i_data_3_spot);
+        row_$i_spot.appendChild(row_$i_data_4_spot);
+        row_$i_spot.appendChild(row_$i_data_5_spot);
+        row_$i_spot.appendChild(row_$i_data_6_spot);
+        row_$i_spot.appendChild(row_$i_data_7_spot);
+        document.getElementById('bodyspot').getElementsByTagName('tbody')[0].appendChild(row_$i_spot);
         }
-      });
-      */
+        /*
+        $("td").each(function() {
+          if (this.innerText === '') {
+            this.closest('tr').remove();
+          }
+        });
+        */
       //성공시 들어갈 코드
+      }
     }).fail(function(data){
       //실패시 들어갈 코드
     })
   }
-  document.getElementById('sponum').textContent = document.getElementById('servernzone').textContent;
   var intervalspot = setInterval(() => {makeHuntTimerloopspot()}, 10000);
 }
 
@@ -17346,9 +17354,9 @@ class Radar {
           if (instancecut === '') {var instancenum = 3;}
           document.getElementById('instancenumber').textContent = instancenum;
           if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('zone').textContent == "울티마 툴레") {
-            if(instancenum == 1) {document.getElementById('zonenum').textContent = "02"}
-            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"}
-            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"}
+            if(instancenum == 1) {document.getElementById('zonenum').textContent = "02"; var zoneshort = "울티마"}
+            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"; var zoneshort = "울티마 (2)"}
+            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"; var zoneshort = "울티마 (3)"}
 
             if (document.getElementById('spodisplay').textContent == 1) {
               if (document.getElementById('server').textContent == "모그리") {var servershort = "moo"}
@@ -17357,6 +17365,7 @@ class Radar {
               if (document.getElementById('server').textContent == "톤베리") {var servershort = "ton"}
               if (document.getElementById('server').textContent == "펜리르") {var servershort = "fen"}
               var zonenum = document.getElementById('zonenum').textContent;
+              document.getElementById('zoneshort').textContent = zoneshort;
               document.getElementById('servernzone').textContent = servershort + zonenum;
 
               makeHuntTimerspot();
@@ -17793,17 +17802,18 @@ class Radar {
           if (document.getElementById('server').textContent == "카벙클") {var servershort = "car"}
           if (document.getElementById('server').textContent == "톤베리") {var servershort = "ton"}
           if (document.getElementById('server').textContent == "펜리르") {var servershort = "fen"}
-          if (name == "갈레말드") {var zonenum = "00"}
-          if (name == "라비린토스") {var zonenum = "01"}
-          if (name == "아므 아랭") {var zonenum = "03"}
-          if (name == "일 메그") {var zonenum = "04"}
-          if (name == "얀샤") {var zonenum = "05"}
-          if (name == "아짐 대초원") {var zonenum = "06"}
-          if (name == "커르다스 서부고지") {var zonenum = "07"}
-          if (name == "저지 라노시아") {var zonenum = "08"}
-          if (name == "고지 라노시아") {var zonenum = "09"}
-          if (name == "검은장막 숲 남부삼림") {var zonenum = "10"}
-          if (name == "중부 다날란") {var zonenum = "11"}
+          if (name == "갈레말드") {var zonenum = "00"; var zoneshort = "갈레말드"}
+          if (name == "라비린토스") {var zonenum = "01"; var zoneshort = "라비린토"}
+          if (name == "아므 아랭") {var zonenum = "03"; var zoneshort = "아므아랭"}
+          if (name == "일 메그") {var zonenum = "04"; var zoneshort = "일메그"}
+          if (name == "얀샤") {var zonenum = "05"; var zoneshort = "얀샤"}
+          if (name == "아짐 대초원") {var zonenum = "06"; var zoneshort = "아짐초원"}
+          if (name == "커르다스 서부고지") {var zonenum = "07"; var zoneshort = "커르서부"}
+          if (name == "저지 라노시아") {var zonenum = "08"; var zoneshort = "저지라노"}
+          if (name == "고지 라노시아") {var zonenum = "09"; var zoneshort = "고지라노"}
+          if (name == "검은장막 숲 남부삼림") {var zonenum = "10"; var zoneshort = "남부삼림"}
+          if (name == "중부 다날란") {var zonenum = "11"; var zoneshort = "중부다날"}
+          document.getElementById('zoneshort').textContent = zoneshort;
           document.getElementById('servernzone').textContent = servershort + zonenum;
 
           makeHuntTimerspot();
@@ -17819,7 +17829,7 @@ class Radar {
         if (name != '울티마 툴레') {
           document.getElementById('maplink').src = "";
           if (document.getElementById('server').textContent != "" && document.getElementById('server').textContent != null) {
-            document.getElementById('sponum').textContent = 1;
+            document.getElementById('zoneshort').textContent = 1;
             document.getElementById('bodyspot').style.display = "none";
           }
         }
