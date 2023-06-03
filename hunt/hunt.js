@@ -16283,13 +16283,13 @@ const instanceChangedRegexes = {
 };
 const ssminionpopupRegexes = {
   ko: netregexes/* default.gameLog */.ZP.gameLog({
-    code: '0038',
+    code: '0039',
     line: '특수 정예 마물의 부하가 정찰 활동을 시작한 것 같습니다.'
   })
 };
 const ssminiongoneRegexes = {
   ko: netregexes/* default.gameLog */.ZP.gameLog({
-    code: '0038',
+    code: '0039',
     line: '특수 정예 마물의 부하가 정찰 활동을 마치고 돌아간 것 같습니다.'
   })
 };
