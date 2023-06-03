@@ -16147,6 +16147,9 @@ id : ???|00|??|0000|00||id|
 04|2023-06-02T11:16:33.3900000+09:00|4012B29B|내가네이름을부를게|00|37|0000|00||887|882|12497342|12502512|0|10000|||-98.28|-54.98|4.73|-1.64|b20e9d8dd037fcf7
 검은장막 숲 북부삼림 ( 25.1 , 24.9 ) 57레벨
 258|2023-06-02T14:07:07.4410000+09:00|Add|1390|000000CE|00000000|00000000|00000000|00000000|00000000|101BC37D|f626b899bebad686
+검은장막 숲 중부삼림 ( 14.8 , 22.0 ) 56레벨
+258|2023-06-03T23:27:08.7830000+09:00|Add|0000|000000C5|00000000|00000000|00000000|00000000|00000000|00000000|781b0e661b017f81
+03|2023-06-03T23:27:09.4960000+09:00|400DC941|검은고양이네로|00|38|0000|00||887|882|12934080|12934080|0|10000|||-324.68|21.10|60.79|0.50|672ba8041c439654
 => 중부삼림 2개 / 동부삼림 3개 / 남부삼림 4개 / 북부삼림 3개 / 총 12개
 커얼레기나 (1단계)
 고귀한 커얼 id 3790
@@ -16185,16 +16188,19 @@ id : ???|00|??|0000|00||id|
 258|2023-05-26T23:17:55.6220000+09:00|Remove|0000|0000036D|00000000|00000000|00000000|00000000|00000000|0000002A|4cca3de94bc342e5
 258|2023-06-01T19:15:17.3510000+09:00|Add|E000|0000036D|00000000|00000000|00000000|00000000|00000000|00000000|e36124fd79906a07
 258|2023-06-01T19:28:28.8490000+09:00|Remove|0000|0000036D|00000000|00000000|00000000|00000000|00000000|00000000|95c1052ce3fb9b75
+=> 야광화 총 3군데
 타마모 id 6290
 258|2023-05-28T06:28:52.8270000+09:00|Add|E000|000004C2|00000001|00000000|00000000|00000000|00000000|00000000|4f27603aad234fd3
 03|2023-05-28T06:29:03.2080000+09:00|400B58AE|타마모 어전|00|46|0000|00||6290|7422|14330656|14330656|10000|10000|||-251.09|-446.28|53.22|-0.10|a87e47e32e182ebc
 04|2023-05-28T06:43:33.0610000+09:00|400B58AE|타마모 어전|00|46|0000|00||6290|7422|5841426|14330656|10000|10000|||-251.09|-446.28|53.22|2.99|7dfc9ff94d8f335f
 258|2023-05-28T06:43:53.0590000+09:00|Remove|0000|000004C2|00000000|00000000|00000000|00000000|00000000|00000000|4da104b2f7951f60
+=> 타마모 총 5군데
 익시온 id 6392
 258|2023-05-28T02:42:01.7180000+09:00|Add|E000|00000451|00000000|00000000|00000000|00000000|00000000|00000000|1be59f42fbfaa20f
 03|2023-05-28T02:42:01.8940000+09:00|40072BE9|익시온|00|46|0000|00||6392|7415|19091643|19091643|0|10000|||-248.74|48.85|5.01|-1.57|8c2d6b53942e6143
 258|2023-05-28T03:12:02.0270000+09:00|Remove|0000|00000451|00000000|00000000|00000000|00000000|00000000|00000000|e065e2b1faffd551
 04|2023-05-28T03:12:03.3630000+09:00|40072BE9|익시온|00|46|0000|00||6392|7415|19091643|19091643|0|10000|||-245.65|44.09|5.36|1.61|1bdcc1c7062a1ba2
+=> 익시온 총 3군데
 어마무시 id 8822
 03|2023-05-24T23:49:03.3330000+09:00|400A5A63|어마무시|00|50|0000|00||8822|10573|62876243|62876243|0|10000|||616.64|-9.69|286.70|1.13|7ea62f8cc73c0ca4
 258|2023-05-24T23:49:01.9060000+09:00|Add|BEFF|000005B8|00000000|00000000|00000000|00000000|00000000|00007F1A|3dc80c40fce9f8be
@@ -16273,6 +16279,18 @@ const instanceChangedRegexes = {
   ko: netregexes/* default.gameLog */.ZP.gameLog({
     code: '0039',
     line: '인스턴스 지역.*?'
+  })
+};
+const ssminionpopupRegexes = {
+  ko: netregexes/* default.gameLog */.ZP.gameLog({
+    code: '0038',
+    line: '특수 정예 마물의 부하가 정찰 활동을 시작한 것 같습니다.'
+  })
+};
+const ssminiongoneRegexes = {
+  ko: netregexes/* default.gameLog */.ZP.gameLog({
+    code: '0038',
+    line: '특수 정예 마물의 부하가 정찰 활동을 마치고 돌아간 것 같습니다.'
   })
 };
 const instructionRegexes = {
@@ -16862,8 +16880,14 @@ if (document.getElementById('page').textContent == 'report.html' && document.get
   document.getElementById('autoreport').textContent = 3;
   makeTabletip();
   makeTablerun();
-  document.getElementById('bodytip').style.display = "none";
   document.getElementById('bodyrun').style.display = "none";
+  if(localStorage.getItem('instruction') == 2) {
+    document.getElementById('repdisplay').textContent = 2;
+    makeHuntTimertip();
+    document.getElementById('bodytip').style.display = "table";
+  } else {
+    document.getElementById('bodytip').style.display = "none";
+  }
 }
 
 if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('spodisplay').textContent == '') {
@@ -16938,6 +16962,8 @@ class Radar {
       addedCombatantFull: netregexes/* default.addedCombatantFull */.ZP.addedCombatantFull(),
       worldChanged: worldChangedRegexes[this.options.ParserLanguage],
       instanceChanged: instanceChangedRegexes[this.options.ParserLanguage],
+      ssminionpopup: ssminionpopupRegexes[this.options.ParserLanguage],
+      ssminiongone: ssminiongoneRegexes[this.options.ParserLanguage],
       instruction: instructionRegexes[this.options.ParserLanguage],
       report: reportRegexes[this.options.ParserLanguage],
       autoreport: autoreportRegexes[this.options.ParserLanguage],
@@ -17319,16 +17345,19 @@ class Radar {
           document.getElementById('reboot').textContent = '';
 
           if (document.getElementById('page').textContent == 'report.html') {
-            if (localStorage.getItem('instruction') == 4) {
-              document.getElementById('repdisplay').textContent = 4;
-              document.getElementById('bodyins').style.display = "none";
-            } else {
+            document.getElementById('bodyins').style.display = "none";
+            document.getElementById('bodytip').style.display = "none";
+            document.getElementById('bodyrun').style.display = "none";
+            if (localStorage.getItem('instruction') == 1) {
               document.getElementById('repdisplay').textContent = 1;
               makeHuntTimerins();
               document.getElementById('bodyins').style.display = "table";
             }
-            document.getElementById('bodytip').style.display = "none";
-            document.getElementById('bodyrun').style.display = "none";
+            if (localStorage.getItem('instruction') == 2) {
+              document.getElementById('repdisplay').textContent = 2;
+              makeHuntTimertip();
+              document.getElementById('bodytip').style.display = "table";
+            }
             document.getElementById('sumcharacterdata').textContent = '접속자 : 정보 없음 (맵 이동 시 갱신)';
             document.getElementById('sumcharacterdata').style.display = 'inline';
           }
@@ -17426,15 +17455,16 @@ class Radar {
             }
           }
           if (line == '정보 전파') {
-            localStorage.setItem('instruction', 4);
             if (document.getElementById('repdisplay').textContent == 2) {
               document.getElementById('repdisplay').textContent = 5;
+              localStorage.setItem('instruction', 4);
               document.getElementById('bodyins').style.display = "none";
               document.getElementById('bodytip').style.display = "none";
               document.getElementById('bodyrun').style.display = "none";
             } else {
               if (document.getElementById('repdisplay').textContent == 1 || document.getElementById('repdisplay').textContent == 3 || document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 || document.getElementById('repdisplay').textContent == 6) {
                 document.getElementById('repdisplay').textContent = 2;
+                localStorage.setItem('instruction', 2);
                 makeHuntTimertip();
                 document.getElementById('bodyins').style.display = "none";
                 document.getElementById('bodytip').style.display = "table";
@@ -17682,6 +17712,16 @@ class Radar {
               }
             }
           }
+        }
+        if (this.regexes.ssminionpopup.test(log)) {
+          if (document.getElementById('spodisplay').textContent == 1) {
+            document.getElementById('maplink').style.display = "table";
+            document.getElementById('bodyspot').style.display = "none";
+          }
+          document.getElementById('maplink').src = '../hunt/SS' + document.getElementById('zone').textContent + '.png';
+        }
+        if (this.regexes.ssminiongone.test(log)) {
+          document.getElementById('maplink').src = "";
         }
       }
       if (document.getElementById('page').textContent == 'timer.html' && document.getElementById('servererr').textContent == '') {
