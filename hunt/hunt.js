@@ -17882,7 +17882,7 @@ class Radar {
         const matches = m?.groups;
         if (!matches) return;
         const line = matches.line?.toLowerCase();
-        if (line.includes('ProcessTCPInfo: New connection detected for Process')) {
+        if (line.includes('processtcpinfo: new connection detected for process')) {
 
           if (document.getElementById('page').textContent == 'report.html') {
             document.getElementById('repdisplay').textContent = 6;
