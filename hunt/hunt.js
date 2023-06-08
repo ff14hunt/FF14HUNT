@@ -16145,6 +16145,8 @@ id : ???|00|??|0000|00||id|
 258|2023-06-02T11:03:02.8950000+09:00|Add|11FF|000000CC|00000000|00000000|00000000|00000000|00000000|00007FF4|c678071ef85991a7
 258|2023-06-02T11:16:27.4190000+09:00|Remove|0000|000000CC|00000000|00000000|00000000|00000000|00000000|00000000|d22d0faefdd4a81c
 04|2023-06-02T11:16:33.3900000+09:00|4012B29B|내가네이름을부를게|00|37|0000|00||887|882|12497342|12502512|0|10000|||-98.28|-54.98|4.73|-1.64|b20e9d8dd037fcf7
+검은장막 숲 남부삼림 ( 20.0 , 20.3 ) 58레벨
+03|2023-06-07T20:36:38.6480000+09:00|400E2B46|류에온|00|3A|0000|00||887|882|13996800|13996800|0|10000|||-65.14|-50.21|5.06|0.02|57122ccea3985e98
 검은장막 숲 북부삼림 ( 25.1 , 24.9 ) 57레벨
 258|2023-06-02T14:07:07.4410000+09:00|Add|1390|000000CE|00000000|00000000|00000000|00000000|00000000|101BC37D|f626b899bebad686
 검은장막 숲 중부삼림 ( 14.8 , 22.0 ) 56레벨
@@ -16209,11 +16211,9 @@ id : ???|00|??|0000|00||id|
 어마무시 id 8822
 03|2023-05-24T23:49:03.3330000+09:00|400A5A63|어마무시|00|50|0000|00||8822|10573|62876243|62876243|0|10000|||616.64|-9.69|286.70|1.13|7ea62f8cc73c0ca4
 258|2023-05-24T23:49:01.9060000+09:00|Add|BEFF|000005B8|00000000|00000000|00000000|00000000|00000000|00007F1A|3dc80c40fce9f8be
-258|2023-05-24T23:49:01.9060000+09:00|Add|BEFF|000005BD|00000001|00000000|00000000|00000000|00000000|00007F1A|de2c72472fac64fc
-258|2023-05-24T23:49:01.9060000+09:00|Add|BEFF|000005C2|00000000|00000000|00000000|00000000|00000000|00007F1A|0f5e78cc49a63468
 258|2023-05-24T23:49:40.2670000+09:00|Remove|DE4E|000005B8|00000000|00000000|00000000|00000000|00000000|FFFFFFFF|5f3ff7ea4239a105
-258|2023-05-24T23:49:40.2670000+09:00|Remove|DE4E|000005BD|00000000|00000000|00000000|00000000|00000000|FFFFFFFF|5acdfa260e8cf9f5
-258|2023-05-24T23:49:40.2670000+09:00|Remove|DE4E|000005C2|00000000|00000000|00000000|00000000|00000000|FFFFFFFF|ff256874ddde5f4e
+258|2023-06-07T20:19:33.4650000+09:00|Add|0000|000005B8|00000000|00000000|00000000|00000000|00000000|00000000|e06c55385bf3877d
+258|2023-06-07T20:25:18.9150000+09:00|Remove|0E7E|000005B8|00000000|00000000|00000000|00000000|00000000|00000000|0eaebe2cbbf98cd5
 아르케오타니아 id 8234
 03|2023-05-25T00:01:29.0020000+09:00|4009B615|아르케오타니아|00|50|0000|00||8234|10157|63032904|63032904|10000|10000|||278.98|262.44|409.99|3.14|71b9dd0dece90617
 258|2023-05-25T00:01:27.7550000+09:00|Add|0000|00000598|00000000|00000000|00000000|00000000|00000000|00000000|b3059dcf7348eac2
@@ -16885,14 +16885,8 @@ if (document.getElementById('page').textContent == 'report.html' && document.get
   document.getElementById('autoreport').textContent = 3;
   makeTabletip();
   makeTablerun();
+  document.getElementById('bodytip').style.display = "none";
   document.getElementById('bodyrun').style.display = "none";
-  if(localStorage.getItem('instruction') == 2) {
-    document.getElementById('repdisplay').textContent = 2;
-    makeHuntTimertip();
-    document.getElementById('bodytip').style.display = "table";
-  } else {
-    document.getElementById('bodytip').style.display = "none";
-  }
 }
 
 if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('spodisplay').textContent == '') {
@@ -17338,6 +17332,11 @@ class Radar {
               document.getElementById('autorepdisplay').textContent = ' ( 자동 전파 : Off )';
             }
           }
+          if(localStorage.getItem('instruction') == 2) {
+            document.getElementById('repdisplay').textContent = 2;
+            makeHuntTimertip();
+            document.getElementById('bodytip').style.display = "table";
+          }
         }
         if (document.getElementById('page').textContent == 'timer.html') {
           if (document.getElementById('tabdisplay').textContent == 7) {
@@ -17363,6 +17362,7 @@ class Radar {
               makeHuntTimertip();
               document.getElementById('bodytip').style.display = "table";
             }
+            document.getElementById('characterserver').textContent = "";
             document.getElementById('sumcharacterdata').textContent = '접속자 : 정보 없음 (맵 이동 시 갱신)';
             document.getElementById('sumcharacterdata').style.display = 'inline';
           }
