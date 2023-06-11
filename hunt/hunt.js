@@ -17579,9 +17579,8 @@ class Radar {
               document.getElementById('bodytip').style.display = "none";
               document.getElementById('bodyrun').style.display = "none";
             } else {
-              if (document.getElementById('repdisplay').textContent == 1 || document.getElementById('repdisplay').textContent == 2 || 
-                  document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 ||
-                  document.getElementById('repdisplay').textContent == 6) {
+              if (document.getElementById('exprun').textContent != "" && (document.getElementById('repdisplay').textContent == 1 ||
+                  document.getElementById('repdisplay').textContent == 2 || document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 || document.getElementById('repdisplay').textContent == 6)) {
                 document.getElementById('repdisplay').textContent = 3;
                 makeHuntTimerrun();
                 document.getElementById('bodyins').style.display = "none";
