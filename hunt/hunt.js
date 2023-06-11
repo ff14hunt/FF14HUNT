@@ -16149,6 +16149,9 @@ id : ???|00|??|0000|00||id|
 03|2023-06-07T20:36:38.6480000+09:00|400E2B46|류에온|00|3A|0000|00||887|882|13996800|13996800|0|10000|||-65.14|-50.21|5.06|0.02|57122ccea3985e98
 검은장막 숲 북부삼림 ( 25.1 , 24.9 ) 57레벨
 258|2023-06-02T14:07:07.4410000+09:00|Add|1390|000000CE|00000000|00000000|00000000|00000000|00000000|101BC37D|f626b899bebad686
+검은장막 숲 북부삼림 ( 22.1 , 22.1 ) 53레벨
+258|2023-06-09T01:11:39.4630000+09:00|Add|FE7F|000000CD|00000000|00000000|00000000|00000000|00000000|00007F81|ca7c1fcb118c4f67
+03|2023-06-09T01:11:40.6630000+09:00|40178B2C|자애|00|35|0000|00||887|882|9357466|11048400|0|10000|||37.52|43.58|-6.32|0.64|1dffe93ee138c163
 검은장막 숲 중부삼림 ( 14.8 , 22.0 ) 56레벨
 258|2023-06-03T23:27:08.7830000+09:00|Add|0000|000000C5|00000000|00000000|00000000|00000000|00000000|00000000|781b0e661b017f81
 03|2023-06-03T23:27:09.4960000+09:00|400DC941|검은고양이네로|00|38|0000|00||887|882|12934080|12934080|0|10000|||-324.68|21.10|60.79|0.50|672ba8041c439654
@@ -17576,8 +17579,9 @@ class Radar {
               document.getElementById('bodytip').style.display = "none";
               document.getElementById('bodyrun').style.display = "none";
             } else {
-              if (document.getElementById('exprun').textContent != "" && (document.getElementById('repdisplay').textContent == 1 ||
-                  document.getElementById('repdisplay').textContent == 2 || document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 || document.getElementById('repdisplay').textContent == 6)) {
+              if (document.getElementById('repdisplay').textContent == 1 || document.getElementById('repdisplay').textContent == 2 || 
+                  document.getElementById('repdisplay').textContent == 4 || document.getElementById('repdisplay').textContent == 5 ||
+                  document.getElementById('repdisplay').textContent == 6) {
                 document.getElementById('repdisplay').textContent = 3;
                 makeHuntTimerrun();
                 document.getElementById('bodyins').style.display = "none";
