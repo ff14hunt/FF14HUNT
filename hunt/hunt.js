@@ -17882,6 +17882,13 @@ class Radar {
           }
         }
       }
+      
+      document.getElementById('addrankf').textContent = '';
+      document.getElementById('addcorxf').textContent = '';
+      document.getElementById('addcoryf').textContent = '';
+      document.getElementById('addranks').textContent = '';
+      document.getElementById('addcorxs').textContent = '';
+      document.getElementById('addcorys').textContent = '';
     }
 
     if (type === '251') {
