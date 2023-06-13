@@ -17124,8 +17124,7 @@ class Radar {
           }
           if (`${m.rank}` == 'SS+' || `${m.rank}` == 'S' || (`${m.rank}` == 'F' && (`${m.name}` != '커얼레기나' || `${m.hp}` != '4434725'))) {
             var rankadj = `${m.rank}`;
-            if (`${m.rank}` == "SS+") {var rankadj = "SS"}
-            if (rankadj == 'F') {
+            if (`${m.rank}` == 'F') {
               var rankadj = '특수돌발';
               document.getElementById('addrankf').textContent = '특수돌발';
               document.getElementById('addcorxf').textContent = `${mapX}`;
@@ -17140,7 +17139,8 @@ class Radar {
             if (`${m.name}` == '커얼레기나' && `${m.hp}` == '8416660') {
               var rankadj = '레기나 3단계';
             }
-            if (rankadj == 'S' || rankadj == 'SS') {
+            if (`${m.rank}` == "SS+") {var rankadj = "SS"}
+            if (`${m.rank}` == 'S' || `${m.rank}` == 'SS+') {
               document.getElementById('addranks').textContent = rankadj;
               document.getElementById('addcorxs').textContent = `${mapX}`;
               document.getElementById('addcorys').textContent = `${mapY}`;
@@ -17241,7 +17241,7 @@ class Radar {
       document.getElementById('addcorxf').textContent = '';
       document.getElementById('addcoryf').textContent = '';
     }
-    if (`${monster.rank}` == document.getElementById('addranks').textContent) {
+    if (`${monster.rank}` == 'S' || `${monster.rank}` == 'SS+') {
       document.getElementById('addranks').textContent = '';
       document.getElementById('addcorxs').textContent = '';
       document.getElementById('addcorys').textContent = '';
