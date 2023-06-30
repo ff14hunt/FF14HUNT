@@ -16147,6 +16147,11 @@ id : ???|00|??|0000|00||id|
 04|2023-06-02T11:16:33.3900000+09:00|4012B29B|내가네이름을부를게|00|37|0000|00||887|882|12497342|12502512|0|10000|||-98.28|-54.98|4.73|-1.64|b20e9d8dd037fcf7
 검은장막 숲 남부삼림 ( 20.0 , 20.3 ) 58레벨
 03|2023-06-07T20:36:38.6480000+09:00|400E2B46|류에온|00|3A|0000|00||887|882|13996800|13996800|0|10000|||-65.14|-50.21|5.06|0.02|57122ccea3985e98
+검은장막 숲 남부삼림 ( 20.6 , 20.4 ) 50레벨 - 6.3 패치 이후
+03|2023-06-29T13:42:58.7740000+09:00|400083EB|연조|00|32|0000|00||887|882|1063924|3355344|0|10000|||-69.46|-52.78|4.96|1.49|86fe079f16a4f609
+258|2023-06-29T13:43:53.9400000+09:00|Add|0000|000000CC|00000000|00000000|00000000|00000000|00000000|00000000|3452af40002ea402
+25|2023-06-29T13:43:54.7860000+09:00|400083EB|연조|1024C2F4||1a7175c1bb7f4be2
+04|2023-06-29T13:43:56.4330000+09:00|400083EB|연조|00|32|0000|00||887|882|0|3355344|0|10000|||-67.28|-53.06|4.87|0.31|d678f2db0127ccdc
 검은장막 숲 북부삼림 ( 25.1 , 24.9 ) 57레벨
 258|2023-06-02T14:07:07.4410000+09:00|Add|1390|000000CE|00000000|00000000|00000000|00000000|00000000|101BC37D|f626b899bebad686
 검은장막 숲 북부삼림 ( 22.1 , 22.1 ) 53레벨
@@ -16160,6 +16165,8 @@ id : ???|00|??|0000|00||id|
 03|2023-06-05T22:30:12.1740000+09:00|400E39FF|트윈터보의대도주|00|39|0000|00||887|882|13342135|13470624|0|10000|||-289.42|1.17|62.97|0.10|47b7f48f4984f1b7
 258|2023-06-05T22:33:02.9860000+09:00|Update|0000|000000C5|00000063|00000000|00000000|00000000|00000000|00000000|6383f9da9d444c5b
 258|2023-06-05T22:33:04.3640000+09:00|Remove|0000|000000C5|00000000|00000000|00000000|00000000|00000000|00000000|1394301741e50e28
+검은장막 숲 동부삼림 ( 26.7 , 21.7 ) 58레벨
+258|2023-06-25T14:21:54.3720000+09:00|Add|0000|000000C7|00000000|00000000|00000000|00000000|00000000|00000000|5b73b6a8fd111f4e
 => 중부삼림 2개 / 동부삼림 3개 / 남부삼림 4개 / 북부삼림 3개 / 총 12개
 커얼레기나 (1단계)
 고귀한 커얼 id 3790
@@ -16198,18 +16205,31 @@ id : ???|00|??|0000|00||id|
 258|2023-05-26T23:17:55.6220000+09:00|Remove|0000|0000036D|00000000|00000000|00000000|00000000|00000000|0000002A|4cca3de94bc342e5
 258|2023-06-01T19:15:17.3510000+09:00|Add|E000|0000036D|00000000|00000000|00000000|00000000|00000000|00000000|e36124fd79906a07
 258|2023-06-01T19:28:28.8490000+09:00|Remove|0000|0000036D|00000000|00000000|00000000|00000000|00000000|00000000|95c1052ce3fb9b75
+
+258|2023-06-21T18:41:32.7220000+09:00|Add|0000|0000036F|00000000|00000000|00000000|00000000|00000000|00000000|3e2989c0ee25edd5
+258|2023-06-21T18:48:25.2860000+09:00|Remove|0000|0000036F|00000000|00000000|00000000|00000000|00000000|00000000|0c8ac72c8af6c3db
+=> 맵 오른쪽
 => 야광화 총 3군데
 타마모 id 6290
 258|2023-05-28T06:28:52.8270000+09:00|Add|E000|000004C2|00000001|00000000|00000000|00000000|00000000|00000000|4f27603aad234fd3
 03|2023-05-28T06:29:03.2080000+09:00|400B58AE|타마모 어전|00|46|0000|00||6290|7422|14330656|14330656|10000|10000|||-251.09|-446.28|53.22|-0.10|a87e47e32e182ebc
 04|2023-05-28T06:43:33.0610000+09:00|400B58AE|타마모 어전|00|46|0000|00||6290|7422|5841426|14330656|10000|10000|||-251.09|-446.28|53.22|2.99|7dfc9ff94d8f335f
 258|2023-05-28T06:43:53.0590000+09:00|Remove|0000|000004C2|00000000|00000000|00000000|00000000|00000000|00000000|4da104b2f7951f60
+얀샤 ( 16.4 , 12.7 ) - 6.3 업데이트 이후 돌발 변화가 사라짐
+261|2023-06-29T13:33:03.3550000+09:00|Add|4000C3C0|BNpcID|1CFE|CurrentMP|10000|Heading|-257.0356|Level|70|MaxHP|14330656|MaxMP|10000|Name|타마모 어전|PCTargetID|176CAD20|Radius|1.8112|Type|2|WorldID|16256|e7748824d30cc807
+258|2023-06-29T13:35:25.4070000+09:00|Add|0000|000004C6|00000000|00000000|00000000|00000000|00000000|00000000|1a02d59663c0a899
+34|2023-06-29T13:35:34.0980000+09:00|4000C3C0|타마모 어전|4000C3C0|타마모 어전|00|8b9eb7ab0f755d1f
+04|2023-06-29T13:35:45.7730000+09:00|4000C3C0|타마모 어전|00|46|0000|00||6290|7422|71319|14330656|10000|10000|||-251.09|-446.28|53.57|2.78|b60a7c966e87ccac
+261|2023-06-29T13:35:45.7730000+09:00|Remove|4000C3C0|b6aaeb7436298cfc
 => 타마모 총 5군데
 익시온 id 6392
 258|2023-05-28T02:42:01.7180000+09:00|Add|E000|00000451|00000000|00000000|00000000|00000000|00000000|00000000|1be59f42fbfaa20f
 03|2023-05-28T02:42:01.8940000+09:00|40072BE9|익시온|00|46|0000|00||6392|7415|19091643|19091643|0|10000|||-248.74|48.85|5.01|-1.57|8c2d6b53942e6143
 258|2023-05-28T03:12:02.0270000+09:00|Remove|0000|00000451|00000000|00000000|00000000|00000000|00000000|00000000|e065e2b1faffd551
 04|2023-05-28T03:12:03.3630000+09:00|40072BE9|익시온|00|46|0000|00||6392|7415|19091643|19091643|0|10000|||-245.65|44.09|5.36|1.61|1bdcc1c7062a1ba2
+
+258|2023-06-21T23:12:00.3650000+09:00|Add|0000|0000044F|00000000|00000000|00000000|00000000|00000000|00000211|69af361e926b4278
+=> 맵 왼쪽
 => 익시온 총 3군데
 어마무시 id 8822
 03|2023-05-24T23:49:03.3330000+09:00|400A5A63|어마무시|00|50|0000|00||8822|10573|62876243|62876243|0|10000|||616.64|-9.69|286.70|1.13|7ea62f8cc73c0ca4
@@ -16448,7 +16468,7 @@ function makeHuntTimerins() {
     ['&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex2) 초코보 홍련 마물런 리다란 에테 모이면 출'],
     ['2. 자리 오버레이 (spot.html)'],
     ['&nbsp;&nbsp;- 자리 : 지도&자리정리표 열기/닫기'],
-    ['3. 시트 오버레이 (timer.html)'],
+    ['3. 시트 오버레이 (table.html)'],
     ['&nbsp;&nbsp;- 시트 : 시트표 열기/닫기'],
     ['&nbsp;&nbsp;- 시트 1 : S급 마물 시간표 열기/닫기'],
     ['&nbsp;&nbsp;- 시트 2 : 날씨조건 S급 시간표 열기/닫기'],
@@ -17038,9 +17058,9 @@ class Radar {
           if ((`${m.rank}` == 'A' || `${m.rank}` == 'B') && (spotzone == '갈레말드' || spotzone == '라비린토스' || spotzone == '울티마 툴레' || spotzone == '아므 아랭' || 
             spotzone == '일 메그' ||spotzone == '얀샤' || spotzone == '아짐 대초원' || spotzone == '커르다스 서부고지' || spotzone == '저지 라노시아' || spotzone == '고지 라노시아' || 
             spotzone == '검은장막 숲 남부삼림' || spotzone == '중부 다날란')) {
-            if (spotzone == '갈레말드') {var spotnum = '00'; var zoneshort = "갈레말드"}
+            if (spotzone == '갈레말드') {var spotnum = document.getElementById('zonenum').textContent; var zoneshort = "갈레말드"}
             if (spotzone == '라비린토스') {var spotnum = '01'; var zoneshort = "라비린토"}
-            if (spotzone == '울티마 툴레') {var spotnum = document.getElementById('zonenum').textContent; var zoneshort = "울티마"}
+            if (spotzone == '울티마 툴레') {var spotnum = '02'; var zoneshort = "울티마"}
             if (spotzone == '아므 아랭') {var spotnum = '03'; var zoneshort = "아므아랭"}
             if (spotzone == '일 메그') {var spotnum = '04'; var zoneshort = "일메그"}
             if (spotzone == '얀샤') {var spotnum = '05'; var zoneshort = "얀샤"}
@@ -17390,10 +17410,10 @@ class Radar {
           if (instancecut === '') {var instancenum = 2;}
           if (instancecut === '') {var instancenum = 3;}
           document.getElementById('instancenumber').textContent = instancenum;
-          if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('zone').textContent == "울티마 툴레") {
-            if(instancenum == 1) {document.getElementById('zonenum').textContent = "02"; var zoneshort = "울티마"}
-            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"; var zoneshort = "울티마 (2)"}
-            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"; var zoneshort = "울티마 (3)"}
+          if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('zone').textContent == "갈레말드") {
+            if(instancenum == 1) {document.getElementById('zonenum').textContent = "00"; var zoneshort = "갈레말드"}
+            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"; var zoneshort = "갈레말드 (2)"}
+            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"; var zoneshort = "갈레말드 (3)"}
 
             if (document.getElementById('spodisplay').textContent == 1) {
               if (document.getElementById('server').textContent == "모그리") {var servershort = "moo"}
@@ -17840,7 +17860,7 @@ class Radar {
       if (!matches) return;
       const name = matches.name?.toLowerCase();
       document.getElementById('zone').textContent = name;
-      if (document.getElementById('page').textContent == 'spot.html' && (name == '갈레말드' || name == '라비린토스' || name == '아므 아랭' || name == '일 메그' ||
+      if (document.getElementById('page').textContent == 'spot.html' && (name == '라비린토스' || name == '울티마 툴레' || name == '아므 아랭' || name == '일 메그' ||
           name == '얀샤' || name == '아짐 대초원' || name == '커르다스 서부고지' || name == '저지 라노시아' || name == '고지 라노시아' || name == '검은장막 숲 남부삼림' ||
           name == '중부 다날란')) {
 
@@ -17850,8 +17870,8 @@ class Radar {
           if (document.getElementById('server').textContent == "카벙클") {var servershort = "car"}
           if (document.getElementById('server').textContent == "톤베리") {var servershort = "ton"}
           if (document.getElementById('server').textContent == "펜리르") {var servershort = "fen"}
-          if (name == "갈레말드") {var zonenum = "00"; var zoneshort = "갈레말드"}
           if (name == "라비린토스") {var zonenum = "01"; var zoneshort = "라비린토"}
+          if (name == "울티마 툴레") {var zonenum = "02"; var zoneshort = "울티마"}
           if (name == "아므 아랭") {var zonenum = "03"; var zoneshort = "아므아랭"}
           if (name == "일 메그") {var zonenum = "04"; var zoneshort = "일메그"}
           if (name == "얀샤") {var zonenum = "05"; var zoneshort = "얀샤"}
@@ -17874,7 +17894,7 @@ class Radar {
           document.getElementById('maplink').src = '../hunt/' + name + '.png';
         }
       } else {
-        if (name != '울티마 툴레') {
+        if (name != '갈레말드') {
           document.getElementById('maplink').src = "";
           if (document.getElementById('server').textContent != "" && document.getElementById('server').textContent != null) {
             document.getElementById('zoneshort').textContent = 1;
