@@ -16484,7 +16484,7 @@ function makeHuntTimerins() {
     ['&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex2) 초코보 홍련 마물런 리다란 에테 모이면 출'],
     ['2. 자리 오버레이 (spot.html)'],
     ['&nbsp;&nbsp;- 자리 : 지도&자리정리표 열기/닫기'],
-    ['3. 시트 오버레이 (table.html)'],
+    ['3. 시트 오버레이 (timer.html)'],
     ['&nbsp;&nbsp;- 시트 : 시트표 열기/닫기'],
     ['&nbsp;&nbsp;- 시트 1 : S급 마물 시간표 열기/닫기'],
     ['&nbsp;&nbsp;- 시트 2 : 날씨조건 S급 시간표 열기/닫기'],
