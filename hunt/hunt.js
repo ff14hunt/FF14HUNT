@@ -1574,6 +1574,14 @@ class NetRegexes {
    */
 
 
+  static statusList3(params) {
+    return buildRegex('StatusList3', params);
+  }
+  /**
+   * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-42-0x2a-statuslist3
+   */
+
+
   static systemLogMessage(params) {
     return buildRegex('SystemLogMessage', params);
   }
@@ -3058,6 +3066,14 @@ class Regexes {
 
   static map(params) {
     return buildRegex('Map', params);
+  }
+  /**
+   * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-41-0x29-systemlogmessage
+   */
+
+
+  static statusList3(params) {
+    return buildRegex('StatusList3', params);
   }
   /**
    * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-41-0x29-systemlogmessage
@@ -16996,6 +17012,7 @@ class Radar {
       timer: timerRegexes[this.options.ParserLanguage],
       zoneChanged: netregexes/* default.changeZone */.ZP.changeZone(),
       wasDefeated: netregexes/* default.wasDefeated */.ZP.wasDefeated(),
+      statusList3: netregexes/* default.statusList3 */.ZP.statusList3(),
       debug: netregexes/* default.debug */.ZP.debug()
     };
 
@@ -17294,7 +17311,7 @@ class Radar {
       const name = matches.name?.toLowerCase();
       if (!name) return;
 
-      if (document.getElementById('characterserver').textContent == "" && document.getElementById('page').textContent == 'report.html') {
+      if (document.getElementById('sumcharacterdata').textContent == '접속자 : 정보 없음 (맵 이동 시 갱신)' && document.getElementById('page').textContent == 'report.html') {
         const characterid = matches.id?.toLowerCase();
         if (!characterid) return;
 
@@ -17911,13 +17928,37 @@ class Radar {
       document.getElementById('addcorys').textContent = '';
     }
 
-    if (type === '251') {
-      if (this.regexes.debug.test(log)) {
-        const m = this.regexes.debug.exec(log);
+/*
+    if (type === '02') {
+      const m = this.regexes.changedPlayer.exec(log);
+      const matches = m?.groups;
+      if (!matches) return;
+      const name = matches.name?.toLowerCase();
+      if (!name) return;
+      const id = matches.id?.toLowerCase();
+      if (!id) return;
+      document.getElementById('charactername').textContent = name;
+      document.getElementById('characterid').textContent = id;
+    }
+*/
+
+    if (type === '42') {
+      if (this.regexes.statusList3.test(log)) {
+        const m = this.regexes.statusList3.exec(log);
         const matches = m?.groups;
         if (!matches) return;
-        const line = matches.line?.toLowerCase();
-        if (line.includes('processtcpinfo: new connection detected for process')) {
+        const name = matches.name?.toLowerCase();
+        if (!name) return;
+        const id = matches.id?.toLowerCase();
+        if (!id) return;
+console.log(document.getElementById('characterkeepname').textContent + 'a');
+console.log(name + 'b');
+console.log(document.getElementById('characterkeepid').textContent + 'c');
+console.log(id + 'd');
+        if (document.getElementById('characterkeepname').textContent != name || document.getElementById('characterkeepid').textContent != id) {
+
+          document.getElementById('characterkeepname').textContent = name;
+          document.getElementById('characterkeepid').textContent = id;
 
           if (document.getElementById('page').textContent == 'report.html') {
             document.getElementById('repdisplay').textContent = 6;
