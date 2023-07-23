@@ -17928,20 +17928,6 @@ class Radar {
       document.getElementById('addcorys').textContent = '';
     }
 
-/*
-    if (type === '02') {
-      const m = this.regexes.changedPlayer.exec(log);
-      const matches = m?.groups;
-      if (!matches) return;
-      const name = matches.name?.toLowerCase();
-      if (!name) return;
-      const id = matches.id?.toLowerCase();
-      if (!id) return;
-      document.getElementById('charactername').textContent = name;
-      document.getElementById('characterid').textContent = id;
-    }
-*/
-
     if (type === '42') {
       if (this.regexes.statusList3.test(log)) {
         const m = this.regexes.statusList3.exec(log);
@@ -17951,10 +17937,6 @@ class Radar {
         if (!name) return;
         const id = matches.id?.toLowerCase();
         if (!id) return;
-console.log(document.getElementById('characterkeepname').textContent + 'a');
-console.log(name + 'b');
-console.log(document.getElementById('characterkeepid').textContent + 'c');
-console.log(id + 'd');
         if (document.getElementById('characterkeepname').textContent != name || document.getElementById('characterkeepid').textContent != id) {
 
           document.getElementById('characterkeepname').textContent = name;
