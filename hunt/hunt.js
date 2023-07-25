@@ -1174,7 +1174,7 @@ const latestLogDefinitions = {
       value1: 5,
       key2: 6,
       value2: 7,
-      currentWorldID: 9,
+      currentWorldID: 9
       // name: 23,
       // worldID: 39
     },
@@ -1611,6 +1611,14 @@ class NetRegexes {
   }
   /**
    * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-259-0x103-cedirector
+   */
+
+
+  static combatantMemory(params) {
+    return buildRegex('CombatantMemory', params);
+  }
+  /**
+   * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-261-0x105-combatantmemory
    */
 
 
@@ -3093,6 +3101,14 @@ class Regexes {
   }
   /**
    * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-257-0x101-mapeffect
+   */
+
+
+  static combatantMemory(params) {
+    return buildRegex('CombatantMemory', params);
+  }
+  /**
+   * matches: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#line-261-0x105-combatantmemory
    */
 
 
@@ -17013,7 +17029,8 @@ class Radar {
       zoneChanged: netregexes/* default.changeZone */.ZP.changeZone(),
       wasDefeated: netregexes/* default.wasDefeated */.ZP.wasDefeated(),
       statusList3: netregexes/* default.statusList3 */.ZP.statusList3(),
-      debug: netregexes/* default.debug */.ZP.debug()
+      debug: netregexes/* default.debug */.ZP.debug(),
+      combatantMemory: netregexes/* default.combatantMemory */.ZP.combatantMemory()
     };
 
     for (const hunt of Object.values(this.hunts)) {
@@ -17385,7 +17402,7 @@ class Radar {
             document.getElementById('bodya').style.display = "table";
           }
         }
-        if (document.getElementById('reboot').textContent == 1) {
+        if (document.getElementById('reboot').textContent == 1 && document.getElementById('server').textContent != '') {
           document.getElementById('reboot').textContent = '';
 
           if (document.getElementById('page').textContent == 'report.html') {
@@ -17929,18 +17946,37 @@ class Radar {
     }
 
     if (type === '42') {
-      if (this.regexes.statusList3.test(log)) {
-        const m = this.regexes.statusList3.exec(log);
-        const matches = m?.groups;
-        if (!matches) return;
-        const name = matches.name?.toLowerCase();
-        if (!name) return;
-        const id = matches.id?.toLowerCase();
-        if (!id) return;
-        if (document.getElementById('characterkeepname').textContent != name || document.getElementById('characterkeepid').textContent != id) {
+      const m = this.regexes.statusList3.exec(log);
+      const matches = m?.groups;
+      if (!matches) return;
+      const id = matches.id?.toLowerCase();
+      if (!id) return;
+      if (document.getElementById('characterkeepid').textContent != id) {
+        document.getElementById('characterkeepid').textContent = id;
+      }
+    }
 
-          document.getElementById('characterkeepname').textContent = name;
-          document.getElementById('characterkeepid').textContent = id;
+    if (type === '261') {
+      const m = this.regexes.combatantMemory.exec(log);
+      const matches = m?.groups;
+      if (!matches) return;
+      const change = matches.change?.toLowerCase();
+      if (!change) return;
+      const id = matches.id?.toLowerCase();
+      if (!id) return;
+      var now = new Date();
+
+      if (document.getElementById('characterkeepid').textContent == id && change == 'remove') {
+        document.getElementById('timeremoved').textContent = now;
+      }
+      if (document.getElementById('characterkeepid').textContent == id && change == 'add' && document.getElementById('timeremoved').textContent != '' &&
+          document.getElementById('timeremoved').textContent != null) {
+
+        var pretime = new Date(document.getElementById('timeremoved').textContent);
+
+        if (Math.abs(now.getTime() - pretime.getTime()) > 1*10*1000) {
+
+          document.getElementById('characterkeepid').textContent = '';
 
           if (document.getElementById('page').textContent == 'report.html') {
             document.getElementById('repdisplay').textContent = 6;
@@ -17974,6 +18010,8 @@ class Radar {
 
           document.getElementById('reboot').textContent = 1;
         }
+
+        document.getElementById('timeremoved').textContent = '';
       }
     }
 
