@@ -17092,7 +17092,7 @@ class Radar {
           if ((`${m.rank}` == 'A' || `${m.rank}` == 'B') && (spotzone == '갈레말드' || spotzone == '라비린토스' || spotzone == '울티마 툴레' || spotzone == '아므 아랭' || 
             spotzone == '일 메그' ||spotzone == '얀샤' || spotzone == '아짐 대초원' || spotzone == '커르다스 서부고지' || spotzone == '저지 라노시아' || spotzone == '고지 라노시아' || 
             spotzone == '검은장막 숲 남부삼림' || spotzone == '중부 다날란')) {
-            if (spotzone == '갈레말드') {var spotnum = document.getElementById('zonenum').textContent; var zoneshort = "갈레말드"}
+            if (spotzone == '갈레말드') {/*var spotnum = document.getElementById('zonenum').textContent;*/ var spotnum = '00'; var zoneshort = "갈레말드"}
             if (spotzone == '라비린토스') {var spotnum = '01'; var zoneshort = "라비린토"}
             if (spotzone == '울티마 툴레') {var spotnum = '02'; var zoneshort = "울티마"}
             if (spotzone == '아므 아랭') {var spotnum = '03'; var zoneshort = "아므아랭"}
@@ -17444,10 +17444,10 @@ class Radar {
           if (instancecut === '') {var instancenum = 2;}
           if (instancecut === '') {var instancenum = 3;}
           document.getElementById('instancenumber').textContent = instancenum;
-          if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('zone').textContent == "갈레말드") {
-            if(instancenum == 1) {document.getElementById('zonenum').textContent = "00"; var zoneshort = "갈레말드"}
-            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"; var zoneshort = "갈레말드 (2)"}
-            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"; var zoneshort = "갈레말드 (3)"}
+          if (document.getElementById('page').textContent == 'spot.html' && document.getElementById('zone').textContent == "Spot의 인스턴스 필드명") {
+            if(instancenum == 1) {document.getElementById('zonenum').textContent = "00"; var zoneshort = "Spot의 인스턴스 필드명"}
+            if(instancenum == 2) {document.getElementById('zonenum').textContent = "12"; var zoneshort = "Spot의 인스턴스 필드명 (2)"}
+            if(instancenum == 3) {document.getElementById('zonenum').textContent = "13"; var zoneshort = "Spot의 인스턴스 필드명 (3)"}
 
             if (document.getElementById('spodisplay').textContent == 1) {
               if (document.getElementById('server').textContent == "모그리") {var servershort = "moo"}
@@ -17904,6 +17904,7 @@ class Radar {
           if (document.getElementById('server').textContent == "카벙클") {var servershort = "car"}
           if (document.getElementById('server').textContent == "톤베리") {var servershort = "ton"}
           if (document.getElementById('server').textContent == "펜리르") {var servershort = "fen"}
+          if (name == "갈레말드") {var zonenum = "00"; var zoneshort = "갈레말드"}
           if (name == "라비린토스") {var zonenum = "01"; var zoneshort = "라비린토"}
           if (name == "울티마 툴레") {var zonenum = "02"; var zoneshort = "울티마"}
           if (name == "아므 아랭") {var zonenum = "03"; var zoneshort = "아므아랭"}
@@ -17928,7 +17929,7 @@ class Radar {
           document.getElementById('maplink').src = '../hunt/' + name + '.png';
         }
       } else {
-        if (name != '갈레말드') {
+        if (name != 'Spot의 인스턴스 필드명') {
           document.getElementById('maplink').src = "";
           if (document.getElementById('server').textContent != "" && document.getElementById('server').textContent != null) {
             document.getElementById('zoneshort').textContent = 1;
